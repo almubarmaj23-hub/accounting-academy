@@ -50,7 +50,7 @@ export default function HomePage() {
               <span className="text-gold-400">من الصفر إلى الاحتراف</span>
             </h1>
             <p className="text-lg md:text-xl text-emerald-100 mb-8 leading-relaxed max-w-2xl mx-auto">
-              60 درساً تعليمياً شاملاً عبر 10 مستويات متدرجة مع أنشطة تفاعلية وتطبيقات عملية تغطي كل ما تحتاجه للتفوق في عالم المحاسبة المالية، من المبادئ الأساسية إلى المعايير الدولية المتقدمة.
+              100 درس تعليمي شامل عبر 10 مستويات متدرجة مع 20 نشاط تفاعلي وتطبيقات عملية تغطي كل ما تحتاجه للتفوق في عالم المحاسبة المالية، من المبادئ الأساسية إلى المعايير الدولية المتقدمة والقطاعات المتخصصة.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" onClick={() => navigate('courses')}
@@ -75,8 +75,8 @@ export default function HomePage() {
               { icon: BookOpen, label: 'درس تعليمي', value: totalLessons.toString() },
               { icon: GraduationCap, label: 'مستوى تعليمي', value: courseData.length.toString() },
               { icon: Trophy, label: 'سؤال اختباري', value: totalQuizzes.toString() },
-              { icon: Dumbbell, label: 'نشاط تفاعلي', value: '10' },
-              { icon: Users, label: 'ساعة محتوى', value: '200+' },
+              { icon: Dumbbell, label: 'نشاط تفاعلي', value: '20' },
+              { icon: Users, label: 'ساعة محتوى', value: '350+' },
             ].map((stat, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
                 <Card className="border-0 shadow-md text-center py-6">
