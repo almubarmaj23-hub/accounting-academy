@@ -1,0 +1,9 @@
+node_modules/
+.next/
+*.log
+db/*.db
+db/*.db-journal
+.env
+.zscripts/
+download/
+public/images/
