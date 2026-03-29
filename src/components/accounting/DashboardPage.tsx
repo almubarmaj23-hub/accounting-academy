@@ -4,13 +4,15 @@ import { courseData } from '@/data';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
-  Trophy, BookOpen, Target, TrendingUp, Star, Award
+  Trophy, BookOpen, Target, TrendingUp, Star, Award, Dumbbell
 } from 'lucide-react';
+import { activities } from '@/data/activities';
 import { motion } from 'framer-motion';
 
 export default function DashboardPage() {
-  const { completedLessons, quizScores } = useAppStore();
+  const { completedLessons, quizScores, completedActivities, navigate } = useAppStore();
 
   const totalLessonsCount = courseData.reduce((sum, level) => sum + level.lessons.length, 0);
   const completedCount = Object.keys(completedLessons).length;
@@ -122,7 +124,7 @@ export default function DashboardPage() {
 
         {/* Quiz Results */}
         {quizEntries.length > 0 && (
-          <div>
+          <div className="mb-8">
             <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
               <Star className="w-5 h-5 text-gold-600" />
               نتائج الاختبارات
@@ -153,6 +155,38 @@ export default function DashboardPage() {
             </div>
           </div>
         )}
+
+        {/* Activities Progress */}
+        <div className="mb-8">
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
+            <Dumbbell className="w-5 h-5 text-teal-600" />
+            الأنشطة التطبيقية
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-4">
+            <Card className="text-center">
+              <CardContent className="p-3">
+                <div className="text-xl font-extrabold text-emerald-600">{Object.keys(completedActivities).length}</div>
+                <div className="text-[10px] text-muted-foreground">نشاط مكتمل</div>
+              </CardContent>
+            </Card>
+            <Card className="text-center">
+              <CardContent className="p-3">
+                <div className="text-xl font-extrabold">{activities.length - Object.keys(completedActivities).length}</div>
+                <div className="text-[10px] text-muted-foreground">نشاط متبقي</div>
+              </CardContent>
+            </Card>
+            <Card className="text-center">
+              <CardContent className="p-3">
+                <div className="text-xl font-extrabold text-teal-600">{Math.round((Object.keys(completedActivities).length / activities.length) * 100)}%</div>
+                <div className="text-[10px] text-muted-foreground">نسبة الإنجاز</div>
+              </CardContent>
+            </Card>
+          </div>
+          <Button onClick={() => navigate('activities')} variant="outline" className="gap-2 w-full">
+            <Dumbbell className="w-4 h-4" />
+            الذهاب إلى الأنشطة
+          </Button>
+        </div>
       </motion.div>
     </div>
   );

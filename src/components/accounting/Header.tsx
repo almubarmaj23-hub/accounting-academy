@@ -2,7 +2,7 @@
 import { useAppStore } from '@/lib/store';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { BookOpen, Menu, GraduationCap, Home, BarChart3, X } from 'lucide-react';
+import { BookOpen, Menu, GraduationCap, Home, BarChart3, Dumbbell } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Header() {
@@ -12,6 +12,7 @@ export default function Header() {
   const navItems = [
     { label: 'الرئيسية', icon: Home, page: 'home' as const },
     { label: 'المسارات التعليمية', icon: BookOpen, page: 'courses' as const },
+    { label: 'الأنشطة والتطبيقات', icon: Dumbbell, page: 'activities' as const },
     { label: 'لوحة التقدم', icon: BarChart3, page: 'dashboard' as const },
   ];
 

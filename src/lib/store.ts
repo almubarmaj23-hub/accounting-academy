@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-export type PageType = 'home' | 'courses' | 'lesson' | 'quiz' | 'dashboard'
+export type PageType = 'home' | 'courses' | 'lesson' | 'quiz' | 'dashboard' | 'activities' | 'activity-detail'
 
 interface AppState {
   currentPage: PageType
@@ -8,12 +8,14 @@ interface AppState {
   selectedLesson: number | null
   completedLessons: Record<string, boolean>
   quizScores: Record<string, number>
+  completedActivities: Record<string, boolean>
   sessionId: string
   navigate: (page: PageType) => void
   selectLevel: (levelId: number) => void
   selectLesson: (lessonId: number) => void
   markLessonComplete: (lessonId: string) => void
   setQuizScore: (lessonId: string, score: number) => void
+  markActivityComplete: (activityId: string) => void
   getTotalProgress: () => number
 }
 
@@ -33,6 +35,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   selectedLesson: null,
   completedLessons: {},
   quizScores: {},
+  completedActivities: {},
   sessionId: getSessionId(),
 
   navigate: (page) => set({ currentPage: page }),
@@ -43,6 +46,9 @@ export const useAppStore = create<AppState>((set, get) => ({
   })),
   setQuizScore: (lessonId, score) => set((state) => ({
     quizScores: { ...state.quizScores, [lessonId]: score }
+  })),
+  markActivityComplete: (activityId) => set((state) => ({
+    completedActivities: { ...state.completedActivities, [activityId]: true }
   })),
   getTotalProgress: () => {
     const state = get()

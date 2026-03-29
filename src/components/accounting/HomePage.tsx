@@ -6,12 +6,14 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
   BookOpen, GraduationCap, Trophy, Users, Star, ChevronLeft,
-  FileText, Calculator, Shield, Globe, TrendingUp, ArrowLeft, CheckCircle
+  FileText, Calculator, Shield, Globe, TrendingUp, ArrowLeft, CheckCircle,
+  Dumbbell, PieChart, Receipt, Monitor, Building
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const iconMap: Record<string, React.ElementType> = {
-  BookOpen, FileText, TrendingUp, Calculator, Shield, Globe
+  BookOpen, FileText, TrendingUp, Calculator, Shield, Globe,
+  PieChart, Receipt, Monitor, Building
 };
 
 export default function HomePage() {
@@ -48,7 +50,7 @@ export default function HomePage() {
               <span className="text-gold-400">من الصفر إلى الاحتراف</span>
             </h1>
             <p className="text-lg md:text-xl text-emerald-100 mb-8 leading-relaxed max-w-2xl mx-auto">
-              36 درساً تعليمياً شاملاً عبر 6 مستويات متدرجة تغطي كل ما تحتاجه للتفوق في عالم المحاسبة المالية، من المبادئ الأساسية إلى المعايير الدولية المتقدمة.
+              60 درساً تعليمياً شاملاً عبر 10 مستويات متدرجة مع أنشطة تفاعلية وتطبيقات عملية تغطي كل ما تحتاجه للتفوق في عالم المحاسبة المالية، من المبادئ الأساسية إلى المعايير الدولية المتقدمة.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" onClick={() => navigate('courses')}
@@ -71,9 +73,10 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { icon: BookOpen, label: 'درس تعليمي', value: totalLessons.toString() },
-              { icon: GraduationCap, label: 'مستوى تعليمي', value: '6' },
+              { icon: GraduationCap, label: 'مستوى تعليمي', value: courseData.length.toString() },
               { icon: Trophy, label: 'سؤال اختباري', value: totalQuizzes.toString() },
-              { icon: Users, label: 'ساعة محتوى', value: '120+' },
+              { icon: Dumbbell, label: 'نشاط تفاعلي', value: '10' },
+              { icon: Users, label: 'ساعة محتوى', value: '200+' },
             ].map((stat, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
                 <Card className="border-0 shadow-md text-center py-6">
@@ -99,7 +102,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { icon: CheckCircle, title: 'محتوى أكاديمي معتمد', desc: 'محتوى محاضر ومُراجع من خبراء في المحاسبة المالية والمعايير الدولية' },
-              { icon: BookOpen, title: '6 مستويات متدرجة', desc: 'من المبادئ الأساسية للمبتدئين إلى المعايير الدولية المتقدمة للمحترفين' },
+              { icon: BookOpen, title: '10 مستويات متدرجة', desc: 'من المبادئ الأساسية للمبتدئين إلى المعايير الدولية المتقدمة ومحاسبة القطاعات المتخصصة' },
               { icon: Trophy, title: 'اختبارات تفاعلية', desc: 'اختبارات متنوعة في نهاية كل درس لتثبيت المعلومات وقياس مستوى الفهم' },
               { icon: TrendingUp, title: 'تتبع التقدم', desc: 'لوحة تحكم ذكية تتيح لك متابعة تقدمك وتحديد نقاط القوة والضعف' },
               { icon: Globe, title: 'معايير دولية', desc: 'تغطية شاملة للمعايير الدولية IFRS والمعايير المحاسبية المعمول بها' },
@@ -126,7 +129,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">المسارات التعليمية</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">ستة مستويات شاملة تأخذك من الصفر إلى الاحتراف في المحاسبة المالية</p>
+            <p className="text-muted-foreground max-w-2xl mx-auto">عشرة مستويات شاملة مع أنشطة تطبيقية تأخذك من الصفر إلى الاحتراف في المحاسبة المالية</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {courseData.map((level, i) => {

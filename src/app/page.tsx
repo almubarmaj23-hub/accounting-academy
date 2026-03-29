@@ -8,6 +8,7 @@ import CoursesPage from '@/components/accounting/CoursesPage';
 import LessonPage from '@/components/accounting/LessonPage';
 import QuizPage from '@/components/accounting/QuizPage';
 import DashboardPage from '@/components/accounting/DashboardPage';
+import ActivitiesPage from '@/components/accounting/ActivitiesPage';
 
 export default function Home() {
   const { currentPage } = useAppStore();
@@ -21,6 +22,8 @@ export default function Home() {
         {currentPage === 'lesson' && <LessonPage />}
         {currentPage === 'quiz' && <QuizPage />}
         {currentPage === 'dashboard' && <DashboardPage />}
+        {currentPage === 'activities' && <ActivitiesPage />}
+        {currentPage === 'activity-detail' && <ActivitiesPage />}
       </main>
       <Footer />
     </div>
