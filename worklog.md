@@ -92,3 +92,23 @@ Stage Summary:
 - New lessons cover advanced topics: accounting cycle, IAS/IFRS standards, ESG reporting, blockchain, big data, JIT costing, etc.
 - New activities: journal entries, balance sheet, COGS, trial balance, liquidity ratios, auditor report, IFRS 15, budgeting, zakat calculation, comprehensive exam
 - Commit: ecb3c22 pushed to main branch
+
+---
+## Task ID: 5 - data-layer-engineer
+### Work Task
+Create the DATA LAYER files for the Flutter accounting academy app. Convert all TypeScript data (10 levels × 10 lessons, 20 activities) from the Next.js project to Dart.
+
+### Work Summary
+Created 4 files for the Flutter data layer:
+
+1. **`lib/models/level.dart`** (66 lines) — Defines `QuizQuestion`, `Lesson`, and `Level` model classes with `fromJson` factory constructors for deserialization.
+
+2. **`lib/models/activity.dart`** (61 lines) — Defines `ActivityQuestion` and `Activity` model classes with `fromJson` factory constructors, supporting nullable `options` and `hint` fields.
+
+3. **`lib/data/levels_data.dart`** (6,594 lines, 620.5 KB) — Complete course data exported as `List<Level> courseData`. Contains all **10 levels** with **100 lessons total** (10 per level), each lesson having: id, title, description, HTML content, 5 quiz questions with 4 options each, and 5 key points.
+
+4. **`lib/data/activities_data.dart`** (1,256 lines, 74.1 KB) — Complete activities data exported as `List<Activity> activities`. Contains all **20 activities** covering exercises, case studies, simulations, calculations, and a comprehensive exam.
+
+5. **`scripts/convert_data.js`** — Node.js conversion script that reads TypeScript source files, strips TS-specific syntax, evaluates the JS objects, and generates properly escaped Dart constructor calls. Handles single-quote escaping, newline escaping, and recursive value conversion (strings, numbers, booleans, null, arrays, objects).
+
+All files pass `dart analyze` with **no issues found**.
